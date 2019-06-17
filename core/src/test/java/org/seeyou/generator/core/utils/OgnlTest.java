@@ -22,8 +22,6 @@ public class OgnlTest {
 		OgnlContext context = new OgnlContext(null, null, new DefaultMemberAccess(true));
 		context.setRoot(obj);
 
-		System.out.println(obj);
-
 		Assertions.assertEquals("org.seeyou.demo", Ognl.getValue("groupId", context, obj));
 		Assertions.assertEquals("seeyou-demo", Ognl.getValue("artifactId", context, obj));
 		Assertions.assertEquals("0.1.0-SNAPSHOT", Ognl.getValue("version", context, obj));

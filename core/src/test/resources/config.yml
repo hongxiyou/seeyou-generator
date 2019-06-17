@@ -1,0 +1,16 @@
+# 代码生成配置文件
+project:
+  name: SeeYou Demo
+  template: seeyou-boot #seeyou-boot: 基于spring-boot、vue的项目框架
+  groupId: org.seeyou.demo
+  artifactId: seeyou-demo
+  version: 0.1.0-SNAPSHOT
+  package-prefix: org.seeyou.demo #默认值为 ${groupId}.${artifactId}
+
+modules: #业务模块
+  rbac:
+    name: 权限
+    model: rbac-model.yml #默认值为 ${module.key}-model.yml
+    api: rbac-api.yml #默认值为 ${module.key}-api.yml
+  dict:
+    name: 字典
