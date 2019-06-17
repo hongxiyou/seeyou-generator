@@ -24,10 +24,19 @@ public class OgnlTest {
 
 		System.out.println(obj);
 
-		Assertions.assertEquals("org.seeyou.demo", Ognl.getValue("parent.groupId", context, obj));
-		Assertions.assertEquals("seeyou-generator-demo", Ognl.getValue("parent.artifactId", context, obj));
-		Assertions.assertEquals("0.1.0-SNAPSHOT", Ognl.getValue("parent.version", context, obj));
-		Assertions.assertEquals("SeeYou Generator Demo", Ognl.getValue("parent.name", context, obj));
+		Assertions.assertEquals("org.seeyou.demo", Ognl.getValue("groupId", context, obj));
+		Assertions.assertEquals("seeyou-demo", Ognl.getValue("artifactId", context, obj));
+		Assertions.assertEquals("0.1.0-SNAPSHOT", Ognl.getValue("version", context, obj));
+		Assertions.assertEquals("SeeYou Demo", Ognl.getValue("name", context, obj));
+
+		Assertions.assertEquals("${artifactId}-server", Ognl.getValue("modules.server.artifactId", context, obj));
+		Assertions.assertEquals("${name} -- Server", Ognl.getValue("modules.server.name", context, obj));
+
+		Assertions.assertEquals("${artifactId}-client", Ognl.getValue("modules.client.artifactId", context, obj));
+		Assertions.assertEquals("${name} -- Client", Ognl.getValue("modules.client.name", context, obj));
+
+		Assertions.assertEquals("${artifactId}-frontend", Ognl.getValue("modules.frontend.artifactId", context, obj));
+		Assertions.assertEquals("${name} -- Frontend", Ognl.getValue("modules.frontend.name", context, obj));
 
 	}
 

@@ -1,7 +1,5 @@
 package org.seeyou.generator.core.utils;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
@@ -14,23 +12,19 @@ public class YamlLoaderTest {
 		Map<String, Object> options = YamlLoader
 				.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("project.yml"));
 
-		Assertions.assertEquals("org.seeyou.demo", options.get("parent.groupId"));
-		Assertions.assertEquals("seeyou-generator-demo", options.get("parent.artifactId"));
-		Assertions.assertEquals("0.1.0-SNAPSHOT", options.get("parent.version"));
-		Assertions.assertEquals("SeeYou Generator Demo", options.get("parent.name"));
+		Assertions.assertEquals("org.seeyou.demo", options.get("groupId"));
+		Assertions.assertEquals("seeyou-demo", options.get("artifactId"));
+		Assertions.assertEquals("0.1.0-SNAPSHOT", options.get("version"));
+		Assertions.assertEquals("SeeYou Demo", options.get("name"));
 
-		@SuppressWarnings("unchecked")
-		List<String> modules = (List<String>) options.get("parent.modules");
-		Assertions.assertLinesMatch(Arrays.asList("server", "client", "frontend"), modules);
+		Assertions.assertEquals("seeyou-demo-server", options.get("modules.server.artifactId"));
+		Assertions.assertEquals("SeeYou Demo -- Server", options.get("modules.server.name"));
 
-		Assertions.assertEquals("seeyou-generator-demo-server", options.get("server.artifactId"));
-		Assertions.assertEquals("SeeYou Generator Demo -- Server", options.get("server.name"));
+		Assertions.assertEquals("seeyou-demo-client", options.get("modules.client.artifactId"));
+		Assertions.assertEquals("SeeYou Demo -- Client", options.get("modules.client.name"));
 
-		Assertions.assertEquals("seeyou-generator-demo-client", options.get("client.artifactId"));
-		Assertions.assertEquals("SeeYou Generator Demo -- Client", options.get("client.name"));
-
-		Assertions.assertEquals("seeyou-generator-demo-frontend", options.get("frontend.artifactId"));
-		Assertions.assertEquals("SeeYou Generator Demo -- Frontend", options.get("frontend.name"));
+		Assertions.assertEquals("seeyou-demo-frontend", options.get("modules.frontend.artifactId"));
+		Assertions.assertEquals("SeeYou Demo -- Frontend", options.get("modules.frontend.name"));
 	}
 
 }

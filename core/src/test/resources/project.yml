@@ -1,22 +1,18 @@
 # Maven 项目结构配置
-parent:
-  groupId: org.seeyou.demo
-  artifactId: seeyou-generator-demo
-  version: 0.1.0-SNAPSHOT
-  name: SeeYou Generator Demo
-  modules:
-    - server
-    - client
-    - frontend
+groupId: org.seeyou.demo
+artifactId: seeyou-demo
+version: 0.1.0-SNAPSHOT
+name: SeeYou Demo
 
-server:
-  artifactId: ${parent.artifactId}-server
-  name: ${parent.name} -- Server
-
-client:
-  artifactId: ${parent.artifactId}-client
-  name: ${parent.name} -- Client
-
-frontend:
-  artifactId: ${parent.artifactId}-frontend
-  name: ${parent.name} -- Frontend
+modules:
+  server:
+    artifactId: ${artifactId}-server
+    name: ${name} -- Server
+  
+  client:
+    artifactId: ${artifactId}-client
+    name: ${name} -- Client
+  
+  frontend:
+    artifactId: ${artifactId}-frontend
+    name: ${name} -- Frontend
