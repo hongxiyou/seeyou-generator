@@ -19,6 +19,9 @@
 	<properties>
 		<revision>1.0.0-SNAPSHOT</revision>
 		<java.version>1.8</java.version>
+		<snakeyaml-engine.version>1.0</snakeyaml-engine.version>
+		<ognl.version>3.2.10</ognl.version>
+		<beetl.version>3.0.3.RELEASE</beetl.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -28,11 +31,33 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
 	</properties>
+
 	<modules>
 		<module>core</module>
 		<!-- <module>frontend</module> -->
 		<module>server</module>
 	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.snakeyaml</groupId>
+				<artifactId>snakeyaml-engine</artifactId>
+				<version>${snakeyaml-engine.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ognl</groupId>
+				<artifactId>ognl</artifactId>
+				<version>${ognl.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ibeetl</groupId>
+				<artifactId>beetl</artifactId>
+				<version>${beetl.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
@@ -63,4 +88,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
